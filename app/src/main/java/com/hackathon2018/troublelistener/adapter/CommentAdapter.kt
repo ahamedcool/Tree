@@ -19,14 +19,12 @@ import java.util.ArrayList
 /**
 * Created by hyunjin on 2018. 5. 11..
 */
-class BaseAdapter(private var mItems: ArrayList<RecyclerItem>, listener : OnItemClickListener, context : Context) : RecyclerView.Adapter<BaseAdapter.ItemViewHolder>() {
+class CommentAdapter(private var mItems: ArrayList<CommentItem>) : RecyclerView.Adapter<CommentAdapter.ItemViewHolder>() {
 
-    val listeners : OnItemClickListener = listener
-    val contexts : Context = context
 
     // 새로운 뷰 홀더 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_app, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_comment, parent, false)
 
         return ItemViewHolder(view)
     }
@@ -35,11 +33,6 @@ class BaseAdapter(private var mItems: ArrayList<RecyclerItem>, listener : OnItem
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.title.text = mItems[position].title
         holder.writer.text = mItems[position].writer
-        if(mItems[position].private) {
-            holder.card.setCardBackgroundColor(ResourcesCompat.getColor(contexts.resources, R.color.color_ac, null))
-            holder.title.setTextColor(ResourcesCompat.getColor(contexts.resources, R.color.color_white, null))
-            holder.writer.visibility = View.GONE
-        }
 
     }
 
@@ -50,17 +43,11 @@ class BaseAdapter(private var mItems: ArrayList<RecyclerItem>, listener : OnItem
 
     // 커스텀 뷰홀더
     // binding widgets on item layout
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
-        init {
-            itemView.setOnClickListener(this)
-        }
-        override fun onClick(v: View?) {
-            listeners.onItemClick(layoutPosition)
-        }
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
         val title: TextView = itemView.title
         val writer: TextView = itemView.writer
-        val card: CardView = itemView.cardView
     }
 }
 
-class RecyclerItem(val idx: Int, val title: String, val writer: String, val content: String, val private: Boolean)
+class CommentItem(val title: String, val writer: String)
