@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">트리</string>
+
+
+    <!-- Login Activity -->
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_sign_in">Sign in</string>
+    <string name="login_sign_up">Sign up</string>
+    <string name="login_confirm_password">Confirm password</string>
+    <string name="login_email">Email</string>
+    <string name="header_user">User</string>
+    <string name="header_email">admin@andteam.co.kr</string>
+
+</resources>
