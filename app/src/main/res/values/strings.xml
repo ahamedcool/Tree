@@ -12,5 +12,7 @@
     <string name="login_email">Email</string>
     <string name="header_user">User</string>
     <string name="header_email">admin@andteam.co.kr</string>
+    <string name="login_id">ID</string>
+    <string name="login_name">Name</string>
 
 </resources>

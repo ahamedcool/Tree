@@ -37,7 +37,7 @@
         app:layout_constraintVertical_bias="0.241">
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/email"
+            android:id="@+id/id"
             style="@style/AppTheme.EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,12 +47,11 @@
             android:drawablePadding="10dp"
             android:drawableStart="@drawable/ic_email"
             android:ems="10"
-            android:hint="@string/login_email"
+            android:hint="@string/login_id"
             android:inputType="text"
             app:layout_constraintBottom_toTopOf="@+id/pw"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:theme="@style/AppTheme.EditText" />
 
         <android.support.v7.widget.AppCompatEditText
@@ -70,7 +69,7 @@
             app:layout_constraintBottom_toTopOf="@id/pw2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/id"
             app:theme="@style/AppTheme.EditText" />
 
         <android.support.v7.widget.AppCompatEditText
@@ -90,6 +89,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pw"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:theme="@style/AppTheme.EditText" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/name"
+            style="@style/AppTheme.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_user"
+            android:ems="10"
+            android:hint="@string/login_name"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pw2"
             app:theme="@style/AppTheme.EditText" />
 
     </android.support.constraint.ConstraintLayout>
