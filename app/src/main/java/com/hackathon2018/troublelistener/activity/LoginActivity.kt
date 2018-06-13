@@ -107,7 +107,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                     val nick: String = result.replace("SUC:", "")
                     mPreferenceEditor!!.putString("id", mId)
                     mPreferenceEditor!!.apply()
-                    Toasty.success(it, "안녕하세요, $nick 님").show()
                     startActivity<MainActivity>()
 
                 } else if (result.contains("ERR")) {

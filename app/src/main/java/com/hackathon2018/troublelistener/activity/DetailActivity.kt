@@ -47,6 +47,7 @@ class DetailActivity : AppCompatActivity() {
 
         post.setOnClickListener {
             postComment(idx, comment_edit.text.toString(),id,private)
+            comment_edit.setText("")
         }
 
     }
@@ -113,6 +114,7 @@ class DetailActivity : AppCompatActivity() {
     }
     fun postComment(idx: Int, content: String, writer: String, private: Boolean){
         var result = "ERR"
+
         doAsync {
             try {
                 val body = "idx=$idx&content=$content&writer=$writer" //parameter

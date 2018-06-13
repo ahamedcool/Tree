@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     fun refresh(){
         mItems.clear()
         getPrivateTrouble()
-        getPublicTrouble()
     }
     private fun initRecyclerView() { // RecyclerView 기본세팅
         // 변경될 가능성 o : false 로 , 없다면 true.
@@ -117,6 +116,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                 else {
                     Toasty.error(it, "오류가 발생했습니다!").show()
                 }
+                getPublicTrouble()
             }
         }
     }

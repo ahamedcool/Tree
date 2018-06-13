@@ -38,11 +38,15 @@ class BaseAdapter(private var mItems: ArrayList<RecyclerItem>, listener : OnItem
     // View 의 내용을 해당 포지션의 데이터로 바꿉니다.
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.title.text = mItems[position].title
-        holder.writer.text = mItems[position].writer
+        holder.writer.text = mItems[position].writer + "에게서 온"
         if(mItems[position].private) {
             holder.card.setCardBackgroundColor(ResourcesCompat.getColor(contexts.resources, R.color.color_ac, null))
             holder.title.setTextColor(ResourcesCompat.getColor(contexts.resources, R.color.color_white, null))
-            holder.writer.visibility = View.GONE
+            holder.writer.setTextColor(ResourcesCompat.getColor(contexts.resources, R.color.color_white, null))
+            if(mItems[position].writer == id)
+                holder.writer.text = "내가 작성한"
+            else
+                holder.writer.text = "익명에게서 온"
         }
 
     }

@@ -28,6 +28,7 @@ class PostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
+
         mPreference = getSharedPreferences("user", Activity.MODE_PRIVATE)
         id = mPreference!!.getString("id", null)
 
