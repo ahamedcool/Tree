@@ -14,12 +14,17 @@ import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.uiThread
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 import org.json.JSONArray
+import android.content.Intent
+import android.view.Menu
+import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_post.*
 
 
 class MainActivity : AppCompatActivity(), OnItemClickListener {
@@ -43,6 +48,13 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         initRecyclerView()
         mPreference = getSharedPreferences("user", Activity.MODE_PRIVATE)
         id = mPreference!!.getString("id", null)
+        refresh()
+        btn.setOnClickListener {
+            startActivity<PostActivity>()
+        }
+    }
+    fun refresh(){
+        mItems.clear()
         getPrivateTrouble()
         getPublicTrouble()
     }
@@ -103,7 +115,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                     adapter!!.notifyDataSetChanged()
                 }
                 else {
-                    Toasty.error(it, "ERROR occur").show()
+                    Toasty.error(it, "오류가 발생했습니다!").show()
                 }
             }
         }
@@ -157,9 +169,24 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                     adapter!!.notifyDataSetChanged()
                 }
                 else {
-                    Toasty.error(it, "ERROR occur").show()
+                    Toasty.error(it, "오류가 발생했습니다!").show()
                 }
             }
+        }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_refresh, menu)//Menu Resource, Menu
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.item1 -> {
+                refresh()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

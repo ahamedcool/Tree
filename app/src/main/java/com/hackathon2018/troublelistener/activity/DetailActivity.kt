@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.hackathon2018.troublelistener.R
 import com.hackathon2018.troublelistener.adapter.CommentAdapter
 import com.hackathon2018.troublelistener.adapter.CommentItem
@@ -38,6 +39,9 @@ class DetailActivity : AppCompatActivity() {
         val id = i.getStringExtra("id")
         val private : Boolean = i.getBooleanExtra("private", false)
 
+        if(private) {
+            writer.visibility = View.GONE
+        }
         initRecyclerView()
         getList(idx, private)
 
@@ -102,7 +106,7 @@ class DetailActivity : AppCompatActivity() {
                     }
                     adapter!!.notifyDataSetChanged()
                 } else{
-                    Toasty.error(it, "Error occur").show()
+                    Toasty.error(it, "오류가 발생했습니다!").show()
                 }
             }
         }
@@ -149,7 +153,7 @@ class DetailActivity : AppCompatActivity() {
                     mItems.clear()
                     getList(idx, private)
                 } else {
-                    Toasty.error(it, "Error occur").show()
+                    Toasty.error(it, "오류가 발생했습니다!").show()
                 }
             }
         }

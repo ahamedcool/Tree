@@ -53,13 +53,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 when(checkNetwork()) {
                     true -> {
                         when {
-                            mId == "" -> Toasty.warning(this, "Please input your ID").show()
-                            mPw == "" -> Toasty.warning(this, "Please input your password").show()
+                            mId == "" -> Toasty.warning(this, "아이디를 입력해주세요!").show()
+                            mPw == "" -> Toasty.warning(this, "비밀번호를 입력해주세요!").show()
                             else -> loginAccount(mId!!, mPw)
                         }
                     }
                     false -> {
-                        Toasty.warning(this, "Please check your network.").show()
+                        Toasty.warning(this, "인터넷을 확인해주세요!").show()
                     }
                 }
             }
@@ -107,11 +107,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                     val nick: String = result.replace("SUC:", "")
                     mPreferenceEditor!!.putString("id", mId)
                     mPreferenceEditor!!.apply()
-                    Toasty.success(it, "Hello, $nick").show()
+                    Toasty.success(it, "안녕하세요, $nick 님").show()
                     startActivity<MainActivity>()
 
                 } else if (result.contains("ERR")) {
-                    Toasty.error(it, "Error occur").show()
+                    Toasty.error(it, "애러가 발생했습니다!").show()
                 }
             }
         }

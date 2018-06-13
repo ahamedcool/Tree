@@ -1,6 +1,8 @@
 package com.hackathon2018.troublelistener.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.support.v4.content.res.ResourcesCompat
@@ -23,10 +25,12 @@ class BaseAdapter(private var mItems: ArrayList<RecyclerItem>, listener : OnItem
 
     val listeners : OnItemClickListener = listener
     val contexts : Context = context
-
+    var id: String? = null
     // 새로운 뷰 홀더 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_app, parent, false)
+        val sharedPreferences : SharedPreferences = contexts.getSharedPreferences("user", Activity.MODE_PRIVATE)
+        id = sharedPreferences.getString("id", null)
 
         return ItemViewHolder(view)
     }

@@ -47,20 +47,18 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         val mPw = pw.text.toString()
         val mPwConfirm = pw2.text.toString()
         val mId = id.text.toString()
-        val mName = name.text.toString()
         when(checkNetwork()) {
             true -> {
                 when {
-                    mId == "" -> Toasty.warning(this, "Please input your email").show()
-                    mPw == "" -> Toasty.warning(this, "Please input your password").show()
-                    mPwConfirm == "" -> Toasty.warning(this, "Please confirm your password").show()
-                    mName == "" -> Toasty.warning(this, "Please confirm your name").show()
-                    mPw != mPwConfirm -> Toasty.warning(this, "Please verify your re-entered password").show()
-                    else -> createAccount(mId, mPw, mName)
+                    mId == "" -> Toasty.warning(this, "이메일을 적어주세요!").show()
+                    mPw == "" -> Toasty.warning(this, "비밀번호를 적어주세요!").show()
+                    mPwConfirm == "" -> Toasty.warning(this, "두번째 비밀번호를 적어주세요!").show()
+                    mPw != mPwConfirm -> Toasty.warning(this, "비밀번호 재입력을 다시해주세요!").show()
+                    else -> createAccount(mId, mPw, "") // name 사용하지 않기로함!
                 }
             }
             false -> {
-                Toasty.warning(this, "Please check your network.").show()
+                Toasty.warning(this, "인터넷을 확인해주세요!").show()
             }
         }
     }
@@ -89,7 +87,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private fun createAccount(id: String, password: String, name: String) {
 
         if (!isValidPassword(password)) {
-            Toasty.error(this,"Password is not valid").show()
+            Toasty.error(this,"비밀번호가 유효하지 않습니다!").show()
             return
         }
         var result: String = "ERR"
@@ -128,23 +126,13 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             }
             uiThread {
                 if (result.contains("SUC")) {
-                    Toasty.success(it, "Sign up successfully").show()
+                    Toasty.success(it, "회원가입을 성공했어요!").show()
                     startActivity<LoginActivity>()
 
                 } else if (result.contains("ERR")) {
-                    Toasty.error(it, "Error occur").show()
+                    Toasty.error(it, "오류가 발생했어요!").show()
                 }
             }
         }
-
-
-    }
-
-    public override fun onStart() {
-        super.onStart()
-    }
-
-    public override fun onStop() {
-        super.onStop()
     }
 }
